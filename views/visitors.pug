@@ -1,0 +1,15 @@
+extends layout.pug
+
+block content
+  each visitor in visitors
+    table
+      thead
+        tr
+          th Id
+          th Name
+          th Visits
+      tbody
+        tr
+          td= visitor.id
+          td= visitor.name
+          td= visitor.count
