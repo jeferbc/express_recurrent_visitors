@@ -15,15 +15,12 @@ var RecurrentVisitor = mongoose.model("RecurrentVisitor", schema);
 
 app.get('/', (req, res) => {
   let name = req.query.name || 'Anónimo'
-  console.log(name)
   RecurrentVisitor.findOne({ name: name }, function(err, visitor) {
     if (err) return console.error(err);
     if (visitor){
-      console.log(visitor)
       visitor.count += 1
     }else{
       var visitor = new RecurrentVisitor({ name: name, count: 1 })
-      console.log(visitor)
     }visitor.save(function(err) {
       if (err) return console.error(err);
       RecurrentVisitor.find(function(err, visitors) {
